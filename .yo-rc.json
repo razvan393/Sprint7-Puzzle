@@ -1,0 +1,7 @@
+{
+  "generator-react-webpack": {
+    "appName": "puzzle",
+    "style": "css",
+    "postcss": false
+  }
+}
