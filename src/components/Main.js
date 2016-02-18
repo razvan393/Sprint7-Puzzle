@@ -17,7 +17,7 @@ var App = React.createClass({
 
 var Board = React.createClass({
   getInitialState: function () {
-    var size = 3;
+    var size = 5;
     var board = [];
     for (var i = 0; i < (size * size) - 1; i++) {
       var x = Math.floor(i % size) * 100;
@@ -30,12 +30,13 @@ var Board = React.createClass({
         x: (size - 1) * 100,
         y: (size - 1) * 100
       },
-      board: board
+      board: board,
+      size: size
     }
   },
 
   shuffleIt: function (x, y) {
-    var size = 3;
+    var size = this.state.size;
 
     for (var i = 0; i < (size * size) - 1; i++) {
       if ((this.state.board[i].pos.x === x) && (this.state.board[i].pos.y === y)) {
@@ -46,7 +47,7 @@ var Board = React.createClass({
   },
 
   executeShuffle: function () {
-    var size = 3;
+    var size = this.state.size;
     var nextShuffleMove = null;
     var shuffleMoves = Math.floor(Math.random() * (500 - 100) + 100);
 
@@ -91,7 +92,7 @@ var Board = React.createClass({
   },
 
   render: function () {
-    var size = 3;
+    var size = this.state.size;
     var tiles = [];
     for (var i = 0; i < (size * size) - 1; i++) {
       var tile = <Tile
