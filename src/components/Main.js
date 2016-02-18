@@ -121,9 +121,14 @@ var Board = React.createClass({
         <div className="board" style={style}>
           {tiles}
         </div>
+        <div className="example">
+
+        </div>
+        <div>
         <button className="shuffle-btn" onClick={this.onClickShuffle}>
           Shuffle
         </button>
+          </div>
       </div>);
   },
 
@@ -178,7 +183,6 @@ var Tile = React.createClass({
 
   render: function () {
     var pos = this.props.position;
-    var number = this.props.number;
     var index = this.props.index;
     var size = this.props.size;
     var tileSize = this.props.tileSize;
@@ -188,7 +192,7 @@ var Tile = React.createClass({
     var style = {left: pos.x, top: pos.y, width: tileSize, height: tileSize, backgroundPositionX: x, backgroundPositionY: y};
     return (
       <div className="tile" style={style} onClick={this.onClick}>
-        <span>{ number }</span>
+
       </div>);
   }
 

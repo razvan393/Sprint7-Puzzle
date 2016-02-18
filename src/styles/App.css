@@ -21,12 +21,19 @@
 
 }
 
+.example {
+  width: 300px;
+  height: 300px;
+  margin-left: 10px;
+  background: url('http://i163.photobucket.com/albums/t291/moonleerecords/covers/400px/hmrl015-hesus-attor-300.jpg');
+}
+
 .tile span {
   line-height: 450%;
   font-size: 1rem;
 }
 
 .board,
-.shuffle-btn {
+.example {
   display: inline-block;
 }
