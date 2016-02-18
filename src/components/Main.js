@@ -4,20 +4,17 @@ require('styles/App.css');
 import React from 'react';
 
 var App = React.createClass({
-
   render: function () {
     return (
       <div>
         <Board />
-
       </div>);
   }
-
-})
+});
 
 var Board = React.createClass({
   getInitialState: function () {
-    var size = 5;
+    var size = 3;
     var board = [];
     for (var i = 0; i < (size * size) - 1; i++) {
       var x = Math.floor(i % size) * 100;
@@ -53,6 +50,7 @@ var Board = React.createClass({
 
     for (var i = 0; i < shuffleMoves; i++) {
       var emptyPos = this.state.emptyPos;
+
       if ((emptyPos.x === (size - 1) * 100) && (emptyPos.y === (size - 1) * 100)) {
         nextShuffleMove = Math.floor(Math.random() * 2 + 3) % 4;
       } else if ((emptyPos.x === 0) && (emptyPos.y === 0)) {
@@ -61,10 +59,10 @@ var Board = React.createClass({
         nextShuffleMove = Math.floor(Math.random() * 3 + 2) % 4;
       } else if (emptyPos.y === (size - 1) * 100) {
         nextShuffleMove = Math.floor(Math.random() * 3 + 3) % 4;
-      } else if (emptyPos.x === 0) {
-        nextShuffleMove = Math.floor(Math.random() * (4 - 1) + 1) % 4;
       } else if (emptyPos.y === 0) {
-        nextShuffleMove = Math.floor(Math.random() * (4 - 1) + 1) % 3;
+        nextShuffleMove = Math.floor(Math.random() * 3 + 1) % 4;
+      } else if (emptyPos.x === 0) {
+        nextShuffleMove = Math.floor(Math.random() * 3 + 1) % 3;
       } else {
         nextShuffleMove = Math.floor(Math.random() * 4);
       }
@@ -91,6 +89,10 @@ var Board = React.createClass({
     this.executeShuffle();
   },
 
+  onClickShuffle: function () {
+    this.executeShuffle();
+  },
+
   render: function () {
     var size = this.state.size;
     var tiles = [];
@@ -110,6 +112,9 @@ var Board = React.createClass({
         <div className="board">
           {tiles}
         </div>
+        <button className="shuffle-btn" onClick={this.onClickShuffle}>
+          Shuffle
+        </button>
       </div>);
   },
 
